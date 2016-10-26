@@ -324,14 +324,8 @@ static NSString * const kTableViewPanState = @"state";
     // Fix for new screen sizes
     // Initially, the cell is still 320 points wide
     // We need to layout our subviews again when this changes so our constraints clip to the right width
-    BOOL widthChanged = (self.contentView.frame.size.width != frame.size.width);
-    
+    frame.size.width = [[UIScreen mainScreen]bounds].size.width;
     [super setFrame:frame];
-    
-    if (widthChanged)
-    {
-        [self layoutIfNeeded];
-    }
     layoutUpdating = NO;
 }
 
